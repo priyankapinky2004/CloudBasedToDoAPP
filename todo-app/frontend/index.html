@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud To-Do List App</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header section with app title and theme toggle -->
+        <header class="header">
+            <h1>Task Manager</h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Task form section -->
+        <section class="task-form-container">
+            <h2>Add New Task</h2>
+            <form id="task-form" class="task-form">
+                <div class="form-group">
+                    <label for="task-title">Title</label>
+                    <input type="text" id="task-title" name="title" placeholder="Enter task title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" name="description" placeholder="Enter task description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="task-due-date">Due Date</label>
+                    <input type="date" id="task-due-date" name="dueDate" required>
+                </div>
+                
+                <div class="form-group form-actions">
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Add Task</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Task filter options -->
+        <section class="task-filter">
+            <div class="filter-container">
+                <label for="filter-tasks">Filter:</label>
+                <select id="filter-tasks">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-tasks" placeholder="Search tasks...">
+            </div>
+        </section>
+
+        <!-- Tasks list container -->
+        <section class="tasks-container">
+            <h2>My Tasks</h2>
+            <div id="tasks-list" class="tasks-list">
+                <!-- Tasks will be added here dynamically -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading tasks...
+                </div>
+            </div>
+        </section>
+
+        <!-- Task edit modal -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Task</h2>
+                <form id="edit-form" class="task-form">
+                    <input type="hidden" id="edit-task-id">
+                    <div class="form-group">
+                        <label for="edit-task-title">Title</label>
+                        <input type="text" id="edit-task-title" name="title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-task-description">Description</label>
+                        <textarea id="edit-task-description" name="description"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-task-due-date">Due Date</label>
+                        <input type="date" id="edit-task-due-date" name="dueDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="edit-task-completed" name="completed">
+                            Mark as completed
+                        </label>
+                    </div>
+                    
+                    <div class="form-group form-actions">
+                        <button type="submit" class="btn btn-primary">Update Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+/* 
+ * Modern Todo App Styles
+ * A clean, responsive design with dark/light mode support
+ */
+
+/* CSS Variables for theming */
+:root {
+    /* Light theme colors */
+    --primary-color: #3a7bd5;
+    --primary-hover: #2d62b5;
+    --secondary-color: #f5f7fa;
+    --text-color: #333333;
+    --text-secondary: #6c757d;
+    --background-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    --border-color: #eaeaea;
+    --success-color: #38c172;
+    --warning-color: #f7b731;
+    --danger-color: #e3342f;
+    --input-bg: #ffffff;
+    --placeholder-color: #aaaaaa;
+    
+    /* Animation speeds */
+    --transition-fast: 0.15s;
+    --transition-normal: 0.3s;
+  }
+  
+  /* Dark theme variables */
+  body.dark-theme {
+    --primary-color: #4c8dff;
+    --primary-hover: #69a1ff;
+    --secondary-color: #2a2d3a;
+    --text-color: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --background-color: #1a1c23;
+    --card-bg: #2a2d3a;
+    --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --border-color: #3a3f55;
+    --success-color: #42d392;
+    --warning-color: #ffc233;
+    --danger-color: #ff4d4f;
+    --input-bg: #1f212b;
+    --placeholder-color: #6c7293;
+  }
+  
+  /* Base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .theme-toggle:hover {
+    transform: rotate(15deg);
+    background-color: var(--secondary-color);
+  }
+  
+  /* Task form styles */
+  .task-form-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    margin-bottom: 30px;
+    transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+  }
+  
+  .task-form-container:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .task-form-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+  
+  .form-group input, 
+  .form-group textarea, 
+  .form-group select {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 15px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    font-family: inherit;
+  }
+  
+  .form-group input:focus, 
+  .form-group textarea:focus, 
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.15);
+  }
+  
+  .form-group input::placeholder, 
+  .form-group textarea::placeholder {
+    color: var(--placeholder-color);
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .form-actions {
+    flex-direction: row;
+    gap: 12px;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  .btn:active {
+    transform: translateY(0);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--border-color);
+  }
+  
+  .btn-success {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: #2eb161;
+  }
+  
+  .btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #d72e2a;
+  }
+  
+  .btn-sm {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  /* Filter section */
+  .task-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+  
+  .filter-container,
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .filter-container label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .filter-container select,
+  .search-container input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 14px;
+  }
+  
+  .search-container input {
+    width: 220px;
+  }
+  
+  /* Tasks container */
+  .tasks-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+  }
+  
+  .tasks-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Task item styles */
+  .task-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
+  }
+  
+  .task-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .task-item.completed {
+    border-left: 4px solid var(--success-color);
+    opacity: 0.85;
+  }
+  
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  
+  .task-title {
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text-color);
+    margin-right: 70px;
+  }
+  
+  .task-item.completed .task-title {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+  }
+  
+  .task-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    background-color: var(--secondary-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  
+  .task-description {
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .task-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .status-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  .status-badge.pending {
+    background-color: var(--warning-color);
+    color: #333;
+  }
+  
+  .status-badge.completed {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .status-badge.overdue {
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  .empty-list {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-secondary);
+  }
+  
+  .empty-list i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--border-color);
+  }
+  
+  .empty-list p {
+    font-size: 16px;
+  }
+  
+  /* Loading state */
+  .loading {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+  }
+  
+  .loading i {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  /* Error state */
+  .error {
+    text-align: center;
+    padding: 30px;
+    color: var(--danger-color);
+  }
+  
+  .error p {
+    margin-bottom: 16px;
+  }
+  
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+  }
+  
+  .modal-content {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+    animation: modalFadeIn 0.3s;
+  }
+  
+  @keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+  
+  .close:hover {
+    color: var(--danger-color);
+  }
+  
+  /* Toast notification styles */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 14px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+    max-width: 350px;
+  }
+  
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .toast.success {
+    border-left: 4px solid var(--success-color);
+  }
+  
+  .toast.error {
+    border-left: 4px solid var(--danger-color);
+  }
+  
+  /* Animation for task deletion */
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0; height: 0; margin: 0; padding-top: 0; padding-bottom: 0; border: 0;}
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 16px;
+    }
+    
+    .task-filter {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .search-container input {
+      width: 100%;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+    
+    .task-header {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .task-title {
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+    
+    .status-badge {
+      position: static;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    
+    .task-actions {
+      flex-direction: column;
+    }
+    
+    .task-actions .btn {
+      text-align: center;
+    }
+  }
+  
+  /* Add some flair with focus styles */
+  .btn:focus, 
+  input:focus, 
+  textarea:focus, 
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.25);
+  }
+  
+  /* Better focus for accessibility */
+  :focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  
+  /* Custom scrollbar for Webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background-color);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
