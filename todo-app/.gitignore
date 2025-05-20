@@ -1,5 +1,6 @@
 # Firebase service account credentials
 src/firebase-service-account.json
+backend/src/firebase-service-account.json.json
 
 # Node.js dependencies
 node_modules/
